@@ -88,7 +88,7 @@ All results, including trained models, sampled datas will be in the same folder 
 
 ### 3. Hyperparameters tuning:
 #### 3.1 MLP
-This mlp is the model used for final evaluting the generated/sampled synthetic data (**NO the mlp metioned in the ```config.tmol```**).
+This mlp is the model used for final evaluting the generated/sampled synthetic data (**NOT the mlp metioned in the ```config.tmol```**).
 ```
 python eval/tune_eval_mlp.py --help
 usage: tune_eval_mlp.py [-h] [--ds_name DS_NAME] [--device DEVICE] --train TRAIN --test TEST
