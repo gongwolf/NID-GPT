@@ -34,9 +34,9 @@ prefix = str(args.prefix)
 
 pipeline = f'scripts/pipeline.py'
 base_config_path = f'exp/{ds_name}/config.toml'    
-parent_path = Path(f'NID-GPT/exp/{ds_name}/')
-exps_path = Path(f'NID-GPT/exp/{ds_name}/many-exps/') # temporary dir. maybe will be replaced with tempdir
-eval_seeds = f'NID-GPT/scripts/eval_seeds.py'
+parent_path = Path(f'exp/{ds_name}/')
+exps_path = Path(f'exp/{ds_name}/many-exps/') # temporary dir. maybe will be replaced with tempdir
+eval_seeds = f'scripts/eval_seeds.py'
 
 os.makedirs(exps_path, exist_ok=True)
 

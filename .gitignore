@@ -49,7 +49,7 @@ Thumbs.db
 *.parquet
 
 # Ignore other specific folders (if data is generated inside these folders)
-data/
+data
 
 # Ignore VSCode specific files
 .vscode/
