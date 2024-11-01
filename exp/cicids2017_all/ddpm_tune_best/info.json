@@ -1,0 +1,12 @@
+{
+	    "task_type": "multiclass",
+	    "name": "cicids2017_all",
+		"id": "cicids2017_all--id",
+		"n_classes": 10,
+		"train_size": 2255961,
+		"val_size": 2261,
+		"test_size": 2260,
+		"n_num_features": 76,
+		"n_cat_features": 0
+}
+

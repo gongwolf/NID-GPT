@@ -1,0 +1,55 @@
+# Ignore model files and data
+/data/
+_data/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore virtual environment
+venv/
+.env/
+*.env
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.swo
+*~
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore generated model artifacts (add specific extensions if needed)
+*.h5
+*.hdf5
+*.pb
+*.pt
+*.pth
+*.ckpt
+*.joblib
+*.pkl
+
+# Ignore large CSV or data files
+*.csv
+*.tsv
+*.dat
+*.db
+*.sql
+*.npz
+*.npy
+*.parquet
+
+# Ignore other specific folders (if data is generated inside these folders)
+data/
+
+# Ignore VSCode specific files
+.vscode/
