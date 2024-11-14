@@ -53,3 +53,5 @@ data
 
 # Ignore VSCode specific files
 .vscode/
+
+/exp/*/many-exps

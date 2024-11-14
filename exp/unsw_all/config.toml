@@ -1,8 +1,8 @@
 seed = 0
-parent_dir = "/data/qgong/code/NID-GPT/exp/cicids2017_all"
-real_data_path = "/data/qgong/data/CICIDS2017"
+parent_dir = "/data/qgong/code/NID-GPT/exp/unsw_all"
+real_data_path = "/data/qgong/data/UNSW"
 model_type = "mlp"
-num_numerical_features = 76
+num_numerical_features = 35
 device = "cuda:2"
 
 [model_params]

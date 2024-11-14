@@ -1,12 +1,12 @@
 seed = 0
-parent_dir = "/data/qgong/code/NID-GPT/exp/cicids2017_all"
-real_data_path = "/data/qgong/data/CICIDS2017"
+parent_dir = "/data/qgong/code/NID-GPT/exp/cicddos2019_all"
+real_data_path = "/data/qgong/data/CICDDOS2019"
 model_type = "mlp"
-num_numerical_features = 76
+num_numerical_features = 77
 device = "cuda:2"
 
 [model_params]
-num_classes = 10
+num_classes = 11
 is_y_cond = true
 
 [model_params.rtdl_params]

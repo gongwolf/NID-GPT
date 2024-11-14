@@ -1,0 +1,12 @@
+{
+	    "task_type": "multiclass",
+	    "name": "unsw_all",
+		"id": "unsw_all--id",
+		"n_classes": 10,
+		"train_size": 2032037,
+		"val_size": 254005,
+		"test_size": 254005,
+		"n_num_features": 35,
+		"n_cat_features": 0
+}
+

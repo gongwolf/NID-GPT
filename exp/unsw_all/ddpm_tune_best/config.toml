@@ -1,8 +1,8 @@
 seed = 0
-parent_dir = "/data/qgong/code/NID-GPT/exp/cicids2017_all"
-real_data_path = "/data/qgong/data/CICIDS2017"
+parent_dir = "exp/unsw_all/ddpm_tune_best"
+real_data_path = "/data/qgong/data/UNSW"
 model_type = "mlp"
-num_numerical_features = 76
+num_numerical_features = 35
 device = "cuda:2"
 
 [model_params]
@@ -11,12 +11,8 @@ is_y_cond = true
 
 [model_params.rtdl_params]
 d_layers = [
-    512,
-    512,
-    512,
-    512,
-    512,
-    256,
+    1024,
+    1024,
 ]
 dropout = 0.0
 
@@ -25,10 +21,10 @@ num_timesteps = 100
 gaussian_loss_type = "mse"
 
 [train.main]
-steps = 20000
-lr = 0.0002288113668475521
+steps = 50000
+lr = 0.0020280878054278707
 weight_decay = 0.0
-batch_size = 256
+batch_size = 4096
 
 [train.T]
 seed = 0
@@ -40,7 +36,7 @@ cat_encoding = "__none__"
 y_policy = "default"
 
 [sample]
-num_samples = 6500
+num_samples = 20000
 batch_size = 1024
 seed = 0
 

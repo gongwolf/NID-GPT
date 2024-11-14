@@ -1,0 +1,12 @@
+{
+	    "task_type": "multiclass",
+	    "name": "cicddos2019_all",
+		"id": "cicddos2019_all--id",
+		"n_classes": 11,
+		"train_size": 1600000,
+		"val_size": 200000,
+		"test_size": 200000,
+		"n_num_features": 77,
+		"n_cat_features": 0
+}
+

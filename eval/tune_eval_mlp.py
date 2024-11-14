@@ -64,12 +64,12 @@ def objective(trial):
     params = suggest_mlp_params(trial)
     # print(params)
     params["input_shape"] = X_train.shape[1]
-    params["num_classes"] = len(y_train.iloc[:, -1].unique())
+    params["num_classes"] = len(y_train.unique())
 
     model = MLP_Mult(
         input_shape=X_train.shape[1],    # Replace with the actual input shape of your data
         d_layers=params["d_layers"],     # Layer configuration from Optuna
-        num_classes=len(y_train.iloc[:, -1].unique()),                  # Adjust as per your dataset
+        num_classes=len(y_train.unique()),                  # Adjust as per your dataset
         dropout_rate=params["dropout"]
     ).to(args.device)
 

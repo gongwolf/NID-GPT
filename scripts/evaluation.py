@@ -94,12 +94,13 @@ def train_mlp(model, X_train, y_train, X_test, y_test, device, epochs=200, batch
 def train_and_evaluate_model(model_name, X_train, y_train, X_test, y_test):
     print(f"\nEvaluating model: {model_name}")
 
-
-    model = init_model(model_name, input_shape=X_train.shape[1], num_classes=len(y_train.iloc[:, -1].unique()))
+    # CICDDOS2019: d_layers=[256, 1024], batch_size=64, dropout=0
+    # UNSW: d_layers = [512,256,256,512], batch_size = 128, dropout = 0.05
+    model = init_model(model_name, input_shape=X_train.shape[1], num_classes=len(y_train.unique()), d_layers=[256, 1024], dropout_rate=0)
 
     if model_name == 'mlp':
         model = model.to(device)
-        f1, report = train_mlp(model, X_train, y_train, X_test, y_test, device=device, verbose=True)
+        f1, report = train_mlp(model, X_train, y_train, X_test, y_test, device=device, verbose=True, batch_size=64)
         print(report)
     else:
         # Fit the model on the training data
@@ -115,9 +116,9 @@ def train_and_evaluate_model(model_name, X_train, y_train, X_test, y_test):
         print("Classification Report:")
         print(report)
 
-def init_model(model_name, input_shape=76, num_classes = 10):
+def init_model(model_name, input_shape=76, num_classes = 10, d_layers=[64,64,128], dropout_rate=0.2):
     if model_name == 'mlp':
-        return MLP_Mult(input_shape=input_shape, d_layers=[64,64,128], num_classes=num_classes)
+        return MLP_Mult(input_shape=input_shape, d_layers=d_layers, num_classes=num_classes, dropout_rate=dropout_rate)
     elif model_name == 'decision_tree':
         return DecisionTreeClassifier(max_depth=28)
 

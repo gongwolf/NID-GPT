@@ -21,19 +21,23 @@ def load_trained_model(model_path, cuda=True):
     synthesizer.cuda = cuda
     return synthesizer
 
-def main(data_file, ctgan_metadata_path, ctgan_model_save_path, ctgan_data_save_path, epochs, num_rows, use_cuda, table_name, sample_only:bool):
+def main(data_file, ctgan_metadata_path, ctgan_model_save_path, ctgan_data_save_path, epochs, num_rows, use_cuda, table_name, sample_only:bool, load_meta_only:bool):
     # Load data
 
 
     # Prepare Metadata
     if not sample_only: #if only need the sample process, don't need to delete the metafile first
-        if os.path.exists(ctgan_metadata_path):
-            os.remove(ctgan_metadata_path)
-            print(f"File '{ctgan_metadata_path}' deleted successfully.")
         df = pd.read_csv(data_file)
-        print(f"Data loaded with shape: {df.shape}")
-        metadata = Metadata.detect_from_dataframe(df, table_name=table_name)
-        metadata.save_to_json(filepath=ctgan_metadata_path)
+        if not load_meta_only:
+            if os.path.exists(ctgan_metadata_path):
+                os.remove(ctgan_metadata_path)
+                print(f"File '{ctgan_metadata_path}' deleted successfully.")
+            print(f"Data loaded with shape: {df.shape}")
+            metadata = Metadata.detect_from_dataframe(df, table_name=table_name)
+            metadata.save_to_json(filepath=ctgan_metadata_path)
+        else:
+            metadata = Metadata.load_from_json(filepath=ctgan_metadata_path)
+            print(f"File '{ctgan_metadata_path}' Loaded successfully.")
         synthesizer = CTGANSynthesizer(metadata, epochs=epochs, verbose=True, cuda=use_cuda)
         synthesizer.fit(df)
         synthesizer.save(filepath=ctgan_model_save_path)
@@ -56,7 +60,7 @@ if __name__ == "__main__":
 
     # Add arguments for the configurable options
     parser.add_argument('--input', type=str, help="Path to the input data file (CSV format).")
-    parser.add_argument('--metadata', type=str, required=True, help="Path to save the CTGAN metadata JSON file.")
+    parser.add_argument('--metadata', type=str, default="", required=True, help="Path to save the CTGAN metadata JSON file.")
     parser.add_argument('--model_path', type=str, help="Path to save the trained CTGAN model file.")
     parser.add_argument('--output', type=str, help="Path to save the generated synthetic data (CSV format).")
     parser.add_argument('--epochs', type=int, default=1000, help="Number of training epochs for CTGAN.")
@@ -64,6 +68,7 @@ if __name__ == "__main__":
     parser.add_argument('--use_cuda', action='store_true', help="Flag to enable CUDA (GPU) support if available.")
     parser.add_argument('--table_name', type=str, default='ctgan_data', help="the table name showed in the metafile")
     parser.add_argument("--sample_only", action='store_true',  default=False, help="If only do the samppling")
+    parser.add_argument("--load_meta_only", action='store_true', default=False, help="If only load the metafile instead of creating a new one")
 
     args = parser.parse_args()
 
@@ -79,5 +84,6 @@ if __name__ == "__main__":
         num_rows=args.num_rows,
         use_cuda=args.use_cuda,
         table_name = args.table_name,
-        sample_only = args.sample_only
+        sample_only = args.sample_only,
+        load_meta_only = args.load_meta_only
     )
