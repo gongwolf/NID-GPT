@@ -10,9 +10,12 @@ from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
 from tqdm import tqdm
 import time 
+import numpy as np 
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 from eval.models import MLP_Mult
+
+dataset = "cicids2017_all"
 
 def encode_labels(y_train, y_test):
     encoder = LabelEncoder()
@@ -79,14 +82,14 @@ def train_mlp(model, X_train, y_train, X_test, y_test, device, epochs=200, batch
                 f1 = f1_score(y_test.cpu().numpy(), y_pred, average="weighted")  # Weighted F1 score
             if epoch%20==0 and epoch!=0:
                 exec_time = time.time() - start_time
-                print(f"Epoch {epoch+1}/{epochs} - Loss: {avg_loss:.4f} - F1 Score: {f1:.4f} - Time: {exec_time:.4f} sec")
+                print(f"Epoch {epoch+1}/{epochs} - Loss: {avg_loss:.6f} - F1 Score: {f1:.46f} - Time: {exec_time:.6f} sec")
 
     # Final evaluation after training
     model.eval()
     with torch.no_grad():
         y_pred = model(X_test).argmax(dim=1).cpu().numpy()
         f1 = f1_score(y_test.cpu().numpy(), y_pred, average="weighted")
-        final_report = classification_report(y_test.cpu().numpy(), y_pred)
+        final_report = classification_report(y_test.cpu().numpy(), y_pred, digits=6)
 
     return f1, final_report
 
@@ -96,11 +99,28 @@ def train_and_evaluate_model(model_name, X_train, y_train, X_test, y_test):
 
     # CICDDOS2019: d_layers=[256, 1024], batch_size=64, dropout=0
     # UNSW: d_layers = [512,256,256,512], batch_size = 128, dropout = 0.05
-    model = init_model(model_name, input_shape=X_train.shape[1], num_classes=len(y_train.unique()), d_layers=[256, 1024], dropout_rate=0)
+    # 'unsw_all', 'cicids2017_all', 'cicddos2019_all'
+    if dataset == 'unsw_all':
+        d_layers = [512,256,256,512] 
+        batch_size = 128 
+        dropout = 0.05005647540804647
+        lr = 0.0001961136584027084
+    elif dataset == 'cicids2017_all':
+        d_layers = [256,512,256]
+        batch_size = 128 
+        dropout = 0.0
+        lr = 0.00014895038211270643
+    elif dataset == 'cicddos2019_all':
+        d_layers = [256, 1024]
+        batch_size = 64 
+        dropout = 0.0
+        lr = 0.00015795260250406893
+
+    model = init_model(model_name, input_shape=X_train.shape[1], num_classes=len(y_train.unique()), d_layers=d_layers, dropout_rate=dropout)
 
     if model_name == 'mlp':
         model = model.to(device)
-        f1, report = train_mlp(model, X_train, y_train, X_test, y_test, device=device, verbose=True, batch_size=64)
+        f1, report = train_mlp(model, X_train, y_train, X_test, y_test, device=device, verbose=True, batch_size=batch_size, lr=lr)
         print(report)
     else:
         # Fit the model on the training data
@@ -123,20 +143,29 @@ def init_model(model_name, input_shape=76, num_classes = 10, d_layers=[64,64,128
         return DecisionTreeClassifier(max_depth=28)
 
 
-def main():
+def main():    
+    global dataset 
     parser = argparse.ArgumentParser(description="Evaluate different ML models")
     parser.add_argument('--train', type=str, required=True, help='Path to the training CSV file')
     parser.add_argument('--test', type=str, required=True, help='Path to the testing CSV file')
     parser.add_argument('--model', type=str, required=True, choices=['logistic_regression', 'decision_tree', 'random_forest', 'svc','mlp'],
                         help='Name of the model to evaluate')
+    parser.add_argument('--dataset', type=str, required=True, default='cicids2017_all', choices=['unsw_all', 'cicids2017_all', 'cicddos2019_all'],
+                        help='Name of the dataset')
+    
     args = parser.parse_args()
 
     X_train, X_test, y_train, y_test, label_mapping = load_data(args.train, args.test)
 
+    print(args)
     print("training X shape:", X_train.shape)
     print("training Y shape:", y_train.shape)
     print("test X shape:", X_test.shape)    
     print("test Y shape:", y_test.shape)
+    print("train Y class labels:",np.sort(y_train.unique()))
+    print("test Y class labels:", np.sort(y_test.unique()))
+
+    dataset = args.dataset
 
     train_and_evaluate_model(args.model, X_train, y_train, X_test, y_test)
 

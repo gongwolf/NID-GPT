@@ -84,11 +84,16 @@ All results, including trained models, sampled datas will be in the same folder 
 
 ![image](resource/05_gen_results.png)
 
+**NOTICE:** If hyperparameters are tuned followed step 3, the best config is stored in ```~/NID-GPT/exp/{dataset}/ddpm_tune_best/config.toml```, you can copy it back to ```~/NID-GPT/exp/{dataset}```. At the same time, **MAKE SURE the parameters, such as parent_dir, real_data_path, num_samples, are correct.**
 
 
 ### 3. Hyperparameters tuning:
 #### 3.1 MLP
 This mlp is the model used for final evaluting the generated/sampled synthetic data (**NOT the mlp metioned in the ```config.tmol```**).
+
+The final parameters are stored in ```~/NID-GPT/tuned_models/mlp_{dataset}.json```.
+
+
 ```
 python eval/tune_eval_mlp.py --help
 usage: tune_eval_mlp.py [-h] [--ds_name DS_NAME] [--device DEVICE] --train TRAIN --test TEST
@@ -132,6 +137,11 @@ The best config.toml, trained model and sampled data will store in the ```exp/${
 #### NOTICE: ${ds_name} should be same for trainning diffusion model, tune hyperparamters of diffusion and MLP. 
 
 ### 4. Evalution 
+
+Before the evaluation, make sure the **parameters of MLP** are set correctly in ```~/NID-GPT/scripts/evaluation.py```. It may come from the fine-tuned MLP (step 3.1), where the final parameters are stored in ```~/NID-GPT/tuned_models/mlp_{dataset}.json```. Also you can set it mannually. 
+
+![image](resource/06_eval_dataset_mlp_config.png)
+
 ```
 python scripts/evaluation.py --help
 usage: evaluation.py [-h] --train TRAIN --test TEST --model {logistic_regression,decision_tree,random_forest,svc,mlp}
@@ -142,6 +152,15 @@ optional arguments:
   -h, --help            show this help message and exit
   --train TRAIN         Path to the training CSV file
   --test TEST           Path to the testing CSV file
-  --model {logistic_regression,decision_tree,random_forest,svc,mlp}
-                        Name of the model to evaluate
+  --model               {logistic_regression,decision_tree,random_forest,svc,mlp},Name of the model to evaluate
+  --dataset             Name of the dataset
 ```
+
+```
+python scripts/evaluation.py --train /data/qgong/data/CICIDS2017/results/ddpm_synthetic_data_all.csv --test /data/qgong/data/CICIDS2017/test_all_classes.csv --model mlp --dataset cicids2017_all
+```
+
+### 5. Auxiliary Functions
+- ```~/data_process/transfer_csv_to_npy.ipynb```: Transfer a single csv file to npy files that are used to train or fine-tuned parameters of diffusion models. 
+- ```~/data_process/transfer_npy_to_csv.ipynb```: Transfer sampled npy files by the trained diffusion model to CSV, which is used to do the final evaluation.  
+- ```~/data_process/feature_distribution.ipynb```: Draw figures of the distributions of values of columns between orginal data and synthetic data. 

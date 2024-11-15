@@ -1,8 +1,8 @@
 seed = 0
-parent_dir = "exp/unsw_all/"
-real_data_path = "/data/qgong/data/UNSW"
+parent_dir = "exp/cicids2017_all/ddpm_tune_best"
+real_data_path = "/data/qgong/data/CICIDS2017"
 model_type = "mlp"
-num_numerical_features = 35
+num_numerical_features = 76
 device = "cuda:2"
 
 [model_params]
@@ -11,18 +11,18 @@ is_y_cond = true
 
 [model_params.rtdl_params]
 d_layers = [
-    1024,
+    256,
     1024,
 ]
 dropout = 0.0
 
 [diffusion_params]
-num_timesteps = 100
+num_timesteps = 1000
 gaussian_loss_type = "mse"
 
 [train.main]
 steps = 50000
-lr = 0.0020280878054278707
+lr = 0.0029709726711099815
 weight_decay = 0.0
 batch_size = 4096
 
@@ -36,7 +36,7 @@ cat_encoding = "__none__"
 y_policy = "default"
 
 [sample]
-num_samples = 2032037
+num_samples = 20000
 batch_size = 1024
 seed = 0
 

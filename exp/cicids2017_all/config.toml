@@ -1,5 +1,5 @@
 seed = 0
-parent_dir = "/data/qgong/code/NID-GPT/exp/cicids2017_all"
+parent_dir = "exp/cicids2017_all/"
 real_data_path = "/data/qgong/data/CICIDS2017"
 model_type = "mlp"
 num_numerical_features = 76
@@ -11,24 +11,20 @@ is_y_cond = true
 
 [model_params.rtdl_params]
 d_layers = [
-    512,
-    512,
-    512,
-    512,
-    512,
     256,
+    1024,
 ]
 dropout = 0.0
 
 [diffusion_params]
-num_timesteps = 100
+num_timesteps = 1000
 gaussian_loss_type = "mse"
 
 [train.main]
-steps = 20000
-lr = 0.0002288113668475521
+steps = 50000
+lr = 0.0029709726711099815
 weight_decay = 0.0
-batch_size = 256
+batch_size = 4096
 
 [train.T]
 seed = 0
@@ -40,7 +36,7 @@ cat_encoding = "__none__"
 y_policy = "default"
 
 [sample]
-num_samples = 6500
+num_samples = 2260482
 batch_size = 1024
 seed = 0
 
