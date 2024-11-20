@@ -31,7 +31,8 @@ optional arguments:
   --use_cuda            Flag to enable CUDA (GPU) support if available.
   --table_name TABLE_NAME
                         the table name showed in the metafile
-  --sample_only         If only do the samppling
+  --sample_only         If only do the sampling
+  --load_meta_only      If only read the meta file instead of creating a new one
 ```
 
 Command to train and sample:
