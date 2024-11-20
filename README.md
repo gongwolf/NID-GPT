@@ -40,9 +40,9 @@ Command to train and sample:
 python scripts/ctgan_train_generation.py --input /data/qgong/data/CICIDS2017/cicids_all_train_dataset.csv --output /data/qgong/data/CICIDS2017/ctgan_synthetic_data_all_v1.csv --meta /data/qgong/data/CICIDS2017/ctgan_data_all_metadata.json --model /data/qgong/data/CICIDS2017/all_ctgan_synthesizer_v1.pkl --num_rows 10 --epochs 5 --use_cuda
 ```
 
-Sample only based on trained GAN model, need to add the ```--sample``` parameters. 
+Sample only based on trained GAN model, need to add the ```--sample_only``` parameters. 
 ```
-python scripts/ctgan_train_generation.py --output /data/qgong/data/CICIDS2017/ctgan_synthetic_data_all_v1.csv --meta /data/qgong/data/CICIDS2017/ctgan_data_all_metadata.json --model /data/qgong/data/CICIDS2017/all_ctgan_synthesizer.pkl --num_rows 200000 --sample --use_cuda
+python scripts/ctgan_train_generation.py --output /data/qgong/data/CICIDS2017/ctgan_synthetic_data_all_v1.csv --meta /data/qgong/data/CICIDS2017/ctgan_data_all_metadata.json --model /data/qgong/data/CICIDS2017/all_ctgan_synthesizer.pkl --num_rows 200000 --sample_only --use_cuda
 ```
 
 ### 2. TAB_DDPM
