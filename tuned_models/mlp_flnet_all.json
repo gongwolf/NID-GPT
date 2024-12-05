@@ -1,0 +1,12 @@
+{
+    "lr": 0.0005792308680233519,
+    "dropout": 0.0,
+    "weight_decay": 0.0,
+    "d_layers": [
+        512,
+        128
+    ],
+    "batch_size": 128,
+    "input_shape": 76,
+    "num_classes": 11
+}

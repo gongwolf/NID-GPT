@@ -45,9 +45,6 @@ def main(data_file, ctgan_metadata_path, ctgan_model_save_path, ctgan_data_save_
         metadata = Metadata.load_from_json(filepath=ctgan_metadata_path)
         synthesizer=load_trained_model(model_path=ctgan_model_save_path, cuda  = use_cuda)
 
-    # Train CTGAN Synthesizer
-
-
     # Generate synthetic data
     synthetic_data = synthesizer.sample(num_rows=num_rows)
     synthetic_data.to_csv(ctgan_data_save_path, index=False)

@@ -41,8 +41,8 @@ def load_data(train_file, test_file):
     
     label_mapping = None
 
-    if train_df.iloc[:, -1].dtype=="object":
-        y_train, y_test, label_mapping= encode_labels(y_train, y_test)
+    # if train_df.iloc[:, -1].dtype=="object":
+    #     y_train, y_test, label_mapping= encode_labels(y_train, y_test)
 
     return X_train, X_test, y_train, y_test, label_mapping
 
@@ -94,7 +94,7 @@ def train_mlp(model, X_train, y_train, X_test, y_test, device, epochs=200, batch
     return f1, final_report
 
 
-def train_and_evaluate_model(model_name, X_train, y_train, X_test, y_test):
+def train_and_evaluate_model(model_name, X_train, y_train, X_test, y_test, epoch=200):
     print(f"\nEvaluating model: {model_name}")
 
     # CICDDOS2019: d_layers=[256, 1024], batch_size=64, dropout=0
@@ -115,12 +115,23 @@ def train_and_evaluate_model(model_name, X_train, y_train, X_test, y_test):
         batch_size = 64 
         dropout = 0.0
         lr = 0.00015795260250406893
+    elif dataset == "flnet_all":
+        lr = 0.0005792308680233519
+        dropout = 0.0 
+        batch_size = 128
+        d_layers = [512, 128]
+    elif dataset == 'default':
+        d_layers = [256, 1024, 256]
+        batch_size = 64 
+        dropout = 0.0
+        lr = 0.0001
+
 
     model = init_model(model_name, input_shape=X_train.shape[1], num_classes=len(y_train.unique()), d_layers=d_layers, dropout_rate=dropout)
 
     if model_name == 'mlp':
         model = model.to(device)
-        f1, report = train_mlp(model, X_train, y_train, X_test, y_test, device=device, verbose=True, batch_size=batch_size, lr=lr)
+        f1, report = train_mlp(model, X_train, y_train, X_test, y_test, device=device, verbose=True, batch_size=batch_size, lr=lr, epochs=epoch)
         print(report)
     else:
         # Fit the model on the training data
@@ -150,8 +161,9 @@ def main():
     parser.add_argument('--test', type=str, required=True, help='Path to the testing CSV file')
     parser.add_argument('--model', type=str, required=True, choices=['logistic_regression', 'decision_tree', 'random_forest', 'svc','mlp'],
                         help='Name of the model to evaluate')
-    parser.add_argument('--dataset', type=str, required=True, default='cicids2017_all', choices=['unsw_all', 'cicids2017_all', 'cicddos2019_all'],
+    parser.add_argument('--dataset', type=str, required=True, default='cicids2017_all', choices=['unsw_all', 'cicids2017_all', 'cicddos2019_all', 'flnet_all', 'default'],
                         help='Name of the dataset')
+    parser.add_argument('--epoch', type=int, default='200')
     
     args = parser.parse_args()
 
@@ -167,7 +179,7 @@ def main():
 
     dataset = args.dataset
 
-    train_and_evaluate_model(args.model, X_train, y_train, X_test, y_test)
+    train_and_evaluate_model(args.model, X_train, y_train, X_test, y_test, args.epoch)
 
     if label_mapping!=None:
         print(label_mapping)
