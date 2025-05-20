@@ -1,4 +1,4 @@
-# NID-GPT
+# The Evaluation of Generative AI Methods for NIDS
 
 ## Installation
 Add the root of this folder to the ```PYTHONPATH``` variable.
