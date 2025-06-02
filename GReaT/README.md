@@ -1,4 +1,4 @@
-##GReaT
+# GReaT
 
 You can find the document of the Generation of Realistic Tabular data (GReaT) from [here](https://github.com/tabularis-ai/be_great).
 
