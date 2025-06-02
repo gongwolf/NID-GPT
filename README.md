@@ -1,5 +1,4 @@
-# Is Synthetic Data from Generative Models Ready for
-Network Intrusion Detection Systems?
+# Is Synthetic Data from Generative Models Ready for Network Intrusion Detection Systems?
 
 ## Installation
 Add the root of this folder to the ```PYTHONPATH``` variable.
