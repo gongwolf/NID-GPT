@@ -1,4 +1,5 @@
-# The Evaluation of Generative AI Methods for NIDS
+# Is Synthetic Data from Generative Models Ready for
+Network Intrusion Detection Systems?
 
 ## Installation
 Add the root of this folder to the ```PYTHONPATH``` variable.
