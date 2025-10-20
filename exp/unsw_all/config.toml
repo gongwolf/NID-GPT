@@ -1,9 +1,9 @@
 seed = 0
 parent_dir = "exp/unsw_all/"
-real_data_path = "/data/qgong/data/UNSW"
+real_data_path = "data/UNSW"
 model_type = "mlp"
 num_numerical_features = 35
-device = "cuda:2"
+device = "cuda"
 
 [model_params]
 num_classes = 10

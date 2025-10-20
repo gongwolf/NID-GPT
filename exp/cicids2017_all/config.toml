@@ -1,9 +1,9 @@
 seed = 0
 parent_dir = "exp/cicids2017_all/"
-real_data_path = "/data/qgong/data/CICIDS2017"
+real_data_path = "data/CICIDS2017"
 model_type = "mlp"
 num_numerical_features = 76
-device = "cuda:2"
+device = "cuda"
 
 [model_params]
 num_classes = 10
