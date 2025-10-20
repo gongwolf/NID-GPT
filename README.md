@@ -73,6 +73,8 @@ Some models, like Tab-DDPM, require data to be in a specific `.npy` format.
   * To convert your `.csv` data into `.npy` files, see the `data_process/transfer_csv_to_npy.ipynb` notebook.
   * To convert generated `.npy` samples back to `.csv` for evaluation, see the `data_process/transfer_npy_to_csv.ipynb` notebook.
 
+**You also can find the raw csv and our processed data [here](https://eltnmsu-my.sharepoint.com/:f:/r/personal/hcao_nmsu_edu/Documents/DATA/DAC_UH_Jiefei_Milcom2025wk_ICMLAext_CL/NID-GPT/data?csf=1&web=1&e=eY8iTm)**
+
 -----
 
 ## 🔬 Reproducing Our Results
@@ -96,7 +98,7 @@ The fastest way to reproduce our results is to use the provided bash scripts.
     ./batch_scripts/eval.sh
     ```
 
-### You can find all the experiment results from [here](results/README.md).
+**You can find all the experiment results from [here](results/README.md).**
 
 
 ## ⚙️ Manual Reproduction (Detailed Steps)

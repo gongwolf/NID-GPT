@@ -1,6 +1,6 @@
 # Ignore model files and data
-/data/
-_data/
+data/*
+!data/.gitkeep
 
 # Ignore Python cache files
 __pycache__/
