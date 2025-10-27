@@ -33,7 +33,7 @@ You can find the original GReaT framework from [here](https://github.com/tabular
 data = pd.read_csv('<Tabular_data.csv>')
 model = GReaT(llm='<path_to_downloaded_llm_model>',experiment_dir="<folder_to_save_check_point>", batch_size=4, epochs=5, save_steps=5000)
 ```
-
+#### Parameters:
 - Tabular_data.csv: download the processed .csv file, put it into the same directory with the python script. 
 - path_to_downloaded_llm: download the folder of LLM, put it into the same directory with the python script. 
 - folder_to_save_check_point: Create a folder for the checkpoint LLM model saving. 
