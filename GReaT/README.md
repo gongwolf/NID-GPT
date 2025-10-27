@@ -22,6 +22,8 @@ pip install be-great
 ```
 Requires a `Python version >= 3.9`. If you have problem to set up environment for conda from the linux server, you can get help from [here](https://github.com/JiefeiLiu/Federated_learning_env_set_up). 
 
+You can find the original GReaT framework from [here](https://github.com/tabularis-ai/be_great)
+
 ## Quick start
 1. Download the dataset and LLM model, and put then into the current directory. 
 2. (optional) The sample [code](https://github.com/gongwolf/NID-GPT/blob/main/data_process/CICIDS2017_change_column_names1.ipynb) to replace the feature names to full explanation of the CICIDS2017 dataset.
