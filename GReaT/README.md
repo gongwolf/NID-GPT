@@ -27,7 +27,7 @@ You can find the original GReaT framework from [here](https://github.com/tabular
 ## Quick start
 1. Download the dataset and LLM model, and put then into the current directory. 
 2. (optional) The sample [code](https://github.com/gongwolf/NID-GPT/blob/main/data_process/CICIDS2017_change_column_names1.ipynb) to replace the feature names to full explanation of the CICIDS2017 dataset.
-3. Change the loading paths for data, llm, and saving path in the sample [code](https://github.com/gongwolf/NID-GPT/blob/main/GReaT/llm_gpt_neo.ipynb). Example shows below:
+3. Change the loading paths for data, llm, and saving path in [llm_gpt_neo.ipynb](https://github.com/gongwolf/NID-GPT/blob/main/GReaT/llm_gpt_neo.ipynb). Example shows below:
 
 ```aiignore
 data = pd.read_csv('<Tabular_data.csv>')
