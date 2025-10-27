@@ -12,7 +12,7 @@ You can download the processed dataset from [here](https://eltnmsu-my.sharepoint
 
 You can download the original pre-trained LLM from [GPT-Neo-125m](https://huggingface.co/EleutherAI/gpt-neo-125m/tree/main), you can find more pre-trained model from [HuggingFace](https://huggingface.co/).
 
-You also can download the fine-tuned LLM from our [OneDrive](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/EhTZWB27vSJLi1zSXNeQDlcBXBusi7XVo41Rjo3SC0brVQ?e=MPnxrB)
+You also can download the fine-tuned LLM from our [OneDrive](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/EhTZWB27vSJLi1zSXNeQDlcBXBusi7XVo41Rjo3SC0brVQ?e=MPnxrB).
 
 ---
 
@@ -22,7 +22,7 @@ pip install be-great
 ```
 Requires a `Python version >= 3.9`. If you have problem to set up environment for conda from the linux server, you can get help from [here](https://github.com/JiefeiLiu/Federated_learning_env_set_up). 
 
-You can find the original GReaT framework from [here](https://github.com/tabularis-ai/be_great)
+You can find the original GReaT framework from [here](https://github.com/tabularis-ai/be_great).
 
 ## Quick start
 1. Download the dataset and LLM model, and put then into the current directory. 
