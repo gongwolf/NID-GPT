@@ -277,6 +277,10 @@ optional arguments:
 - ```~/data_process/transfer_npy_to_csv.ipynb```: Transfer sampled npy files by the trained diffusion model to CSV, which is used to do the final evaluation.  
 - ```~/data_process/feature_distribution.ipynb```: Draw figures of the distributions of values of columns between orginal data and synthetic data. 
 
+### 7. Sample Generated Synthetic Data
+You can find the generated synthetic data from [here](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/EsWIEZ2UkjVEhriVpG3kvWwB80r-NyopUve1A7MaOmmGaA?e=omE0Rv).
+
+
 ## ✏️ How to Cite
 
 If you use this work, please cite our paper:
