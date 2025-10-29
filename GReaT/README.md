@@ -30,7 +30,7 @@ You can find the original GReaT framework from [here](https://github.com/tabular
 3. Sample command to fine-tune the LLM and generate the synthetic data for CICIDS2017 dataset shows below:
 
 ```aiignore
-generate_great_data.py --epochs 10 --batch_size 8 --n_samples 50000 --device cuda
+python generate_great_data.py --epochs 10 --batch_size 8 --n_samples 50000 --device cuda
 
 ```
 #### Parameters:
