@@ -40,7 +40,8 @@ generate_great_data.py --epochs 10 --batch_size 8 --n_samples 50000 --device cud
 - device: use cpu or GPU, default GPU: "cuda". 
 
 
-### Other Parameters:
+### Other Parameters
+You need to change the data paths from the following optional arguments for the experiments of the other datasets. 
 ```aiignore
 optional arguments:
   -h, --help            show this help message and exit
