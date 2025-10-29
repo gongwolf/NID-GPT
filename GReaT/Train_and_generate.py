@@ -1,6 +1,6 @@
 import argparse
 import pandas as pd
-from be_great import GReaT
+# from be_great import GReaT
 
 def main():
     parser = argparse.ArgumentParser(
@@ -88,7 +88,7 @@ def main():
         "--data_path",
         type=str,
         default="../data/CICIDS2017/train_all_classes.csv",
-        choice = ["../data/CICIDS2017/train_all_classes.csv", "../data/CICDDOS2019/training.csv", "../data/UNSW/train_all_classes.csv"],
+        choices = ["../data/CICIDS2017/train_all_classes.csv", "../data/CICDDOS2019/training.csv", "../data/UNSW/train_all_classes.csv"],
         help="Path to the training CSV data."
     )
     parser.add_argument(

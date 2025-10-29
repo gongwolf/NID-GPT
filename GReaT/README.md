@@ -41,7 +41,34 @@ generate_great_data.py --epochs 10 --batch_size 8 --n_samples 50000 --device cud
 
 
 ### Other Parameters:
-
+```aiignore
+optional arguments:
+  -h, --help            show this help message and exit
+  --llm LLM             HuggingFace checkpoint of a pretrained large language model used as the base model.
+  --experiment_dir EXPERIMENT_DIR
+                        Directory where the training checkpoints will be saved.
+  --batch_size BATCH_SIZE
+                        Batch size used for fine-tuning.
+  --epochs EPOCHS       Number of epochs to fine-tune the model.
+  --save_steps SAVE_STEPS
+                        Save the model after this many steps.
+  --n_samples N_SAMPLES
+                        Number of synthetic samples to generate.
+  --k K                 Sampling batch size. Higher values speed up the generation process.
+  --max_length MAX_LENGTH
+                        Maximum number of tokens to generate. Ensure it's long enough to not cut off any information.
+  --start_col START_COL
+                        Feature to use as the starting point for the generation process.
+  --start_col_dist START_COL_DIST
+                        Distribution of the starting feature (as a Python dictionary string).
+  --device DEVICE       Device to use for generation (e.g., 'cuda' or 'cpu').
+  --data_path {../data/CICIDS2017/train_all_classes.csv,../data/CICDDOS2019/training.csv,../data/UNSW/train_all_classes.csv}
+                        Path to the training CSV data.
+  --save_model_path SAVE_MODEL_PATH
+                        Path to save the trained model.
+  --output_csv OUTPUT_CSV
+                        Path to save the generated synthetic data as CSV.
+```
 
 ---
 
