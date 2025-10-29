@@ -25,21 +25,23 @@ Requires a `Python version >= 3.9`. If you have problem to set up environment fo
 You can find the original GReaT framework from [here](https://github.com/tabularis-ai/be_great).
 
 ## Quick start
-1. Download the dataset and LLM model, and put then into the current directory. 
+1. Download the processed [data](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/Etuw1nXMxgZAixSU405NdEkBsNo8AVsR2X41lfv1gDD4yA?e=1fG78t, and put then into the [data](https://github.com/gongwolf/NID-GPT/tree/main/data) directory. 
 2. (optional) The sample [code](https://github.com/gongwolf/NID-GPT/blob/main/data_process/CICIDS2017_change_column_names1.ipynb) to replace the feature names to full explanation of the CICIDS2017 dataset.
-3. Change the loading paths for data, llm, and saving path in [llm_gpt_neo.ipynb](https://github.com/gongwolf/NID-GPT/blob/main/GReaT/llm_gpt_neo.ipynb). Example shows below:
+3. Sample command to fine-tune the LLM and generate the synthetic data for CICIDS2017 dataset shows below:
 
 ```aiignore
-data = pd.read_csv('<Tabular_data.csv>')
-model = GReaT(llm='<path_to_downloaded_llm_model>',experiment_dir="<folder_to_save_check_point>", batch_size=4, epochs=5, save_steps=5000)
+generate_great_data.py --epochs 10 --batch_size 8 --n_samples 50000 --device cuda
+
 ```
 #### Parameters:
-- Tabular_data.csv: download the processed .csv file, put it into the same directory with the python script. 
-- path_to_downloaded_llm: download the folder of LLM, put it into the same directory with the python script. 
-- folder_to_save_check_point: Create a folder for the checkpoint LLM model saving. 
-- batch_size: A subset of the training dataset used in one iteration of training, if GPU memory is small, suggest use smaller batch size like 1 or 2. 
 - epochs: Total epochs to fine-tune the LLM, each epoch takes more than a month to train. 
-- save_steps: Saving the checkpoints, if the training process get killed or server reboot, you can load the checkpoint and keep training instead of re-train.
+- batch_size: A subset of the training dataset used in one iteration of training, if GPU memory is small, suggest use smaller batch size like 1 or 2. 
+- n_samples: Target number of instances for the synthetic data.
+- device: use cpu or GPU, default GPU: "cuda". 
+
+
+### Other Parameters:
+
 
 ---
 
