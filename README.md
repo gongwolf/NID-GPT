@@ -53,7 +53,7 @@ NID-GPT/
 ├── data_process/       # Jupyter notebooks for data pre/post-processing
 ├── eval/               # Scripts for model evaluation and hyperparameter tuning
 ├── exp/                # Default directory for experiment configs and outputs (for Tab-DDPM)
-├── GReaT/              # Code and resources for the GReaT model
+├── GReaT/              # Code and resources for the LLM (GReaT) model
 ├── results/            # Directory containing all experiment results
 ├── resource/           # Images used in the README
 ├── scripts/            # Main Python scripts for training, sampling, and evaluation
@@ -188,7 +188,7 @@ All results, including trained models, sampled datas will be in the same folder 
 
 #### 1.3 GReaT
 
-Please see the [GReaT](GReaT) directory for instructions on using this model.
+Please see the [GReaT (LLM)](GReaT) directory for instructions on using this model.
 
 
 -----
