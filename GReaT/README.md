@@ -34,7 +34,7 @@ python generate_great_data.py --epochs 5 --batch_size 2 --n_samples 50000 --devi
 
 ```
 #### Parameters:
-- epochs: Total epochs to fine-tune the LLM, each epoch might take more than a month to train. 
+- epochs: Total epochs to fine-tune the LLM, each epoch might take more than one month to train. 
 - batch_size: A subset of the training dataset used in one iteration of training, if GPU memory is small, suggest use smaller batch size like 1 or 2. 
 - n_samples: Target number of instances for the synthetic data.
 - device: use cpu or GPU, default GPU: "cuda". 
