@@ -25,7 +25,7 @@ Requires a `Python version >= 3.9`. If you have problem to set up environment fo
 You can find the original GReaT framework from [here](https://github.com/tabularis-ai/be_great).
 
 ## Quick start
-1. Download the processed [data](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/Etuw1nXMxgZAixSU405NdEkBsNo8AVsR2X41lfv1gDD4yA?e=1fG78t, and put then into the [data](https://github.com/gongwolf/NID-GPT/tree/main/data) directory. 
+1. Download the processed [data](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/Etuw1nXMxgZAixSU405NdEkBsNo8AVsR2X41lfv1gDD4yA?e=1fG78t), and put then into the [data](https://github.com/gongwolf/NID-GPT/tree/main/data) directory. 
 2. (optional) The sample [code](https://github.com/gongwolf/NID-GPT/blob/main/data_process/CICIDS2017_change_column_names1.ipynb) to replace the feature names to full explanation of the CICIDS2017 dataset.
 3. Sample command to fine-tune the LLM and generate the synthetic data for CICIDS2017 dataset shows below:
 
