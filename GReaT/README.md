@@ -73,7 +73,7 @@ optional arguments:
 
 ## Quick start for loading fine-tuned model and generating
 1. Download the fine-tuned [LLMs](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/EhTZWB27vSJLi1zSXNeQDlcBXBusi7XVo41Rjo3SC0brVQ?e=MPnxrB). Put the folder into current file directory.
-2. Run the following command 
+2. Run the following command for CICIDS2017 synthetic dataset generation: 
 
 ```aiignore
 python generate_samples.py --n_samples 5000 --output_csv synthetic_5k.csv --device cuda
