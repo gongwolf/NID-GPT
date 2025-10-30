@@ -1,33 +1,60 @@
 # Is Synthetic Data from Generative Models Ready for Network Intrusion Detection Systems?
 
+---
+
+<h3 align="center">
+Jiefei Liu, Qixu Gong, Wenbin Jiang, Pratyay Kumar, Abu Saleh Md Tayeen, Huiping Cao, Satyajayant Misra, Jayashree Harikumar
+</h3>
+
+<h3 align="center">
+MILCOM 2025 (Accepted and Presented)
+</h3>
+
+<h4 align="center">
+[Link to Paper - coming soon]
+</h4>
+
+---
+
 This repository contains the official resources for the paper "Is Synthetic Data from Generative Models Ready for Network Intrusion Detection Systems?", which evaluates the use of generative AI for creating synthetic datasets for network intrusion detection.
 
-## 📖 Publication
+---
+[//]: # (## 📖 Publication)
 
-The associated paper, "Is Synthetic Data from Generative Models Ready for Network Intrusion Detection Systems?", was accepted and presented by Jiefei Liu on October 6, 2025, at MILCOM 2025 in Los Angeles, CA, USA.
+[//]: # ()
+[//]: # (The associated paper, "Is Synthetic Data from Generative Models Ready for Network Intrusion Detection Systems?", was accepted and presented by Jiefei Liu on October 6, 2025, at MILCOM 2025 in Los Angeles, CA, USA.)
 
-*[Link to Paper - coming soon]*
 
-## ✍️ Authors and Contributors
 
-We would like to thank all the authors and contributors for their help in completing this work:
+[//]: # (## ✍️ Authors and Contributors)
 
-- Jiefei Liu
-- Qixu Gong
-- Wenbin Jiang
-- Pratyay Kumar
-- Abu Saleh Md Tayeen 
-- Huiping Cao
-- Satyajayant Misra
-- Jayashree Harikumar
+[//]: # ()
+[//]: # (We would like to thank all the authors and contributors for their help in completing this work:)
 
-## 🚀 Getting Started
+[//]: # ()
+[//]: # (- Jiefei Liu)
+
+[//]: # (- Qixu Gong)
+
+[//]: # (- Wenbin Jiang)
+
+[//]: # (- Pratyay Kumar)
+
+[//]: # (- Abu Saleh Md Tayeen )
+
+[//]: # (- Huiping Cao)
+
+[//]: # (- Satyajayant Misra)
+
+[//]: # (- Jayashree Harikumar)
+
+## 1. Getting Started
 
 This section provides instructions for setting up the environment and project.
 
-### 1\. Installation
+### 1.1 🚀Installation
 
-Follow these steps to create the conda environment and install the required packages.
+Follow these steps to create the conda environment and install the required packages. If you need help to set up environment on the Linux Server, click [here](https://github.com/JiefeiLiu/Federated_learning_env_set_up).
 
 1.  Create and activate the conda environment:
     ```bash
@@ -43,7 +70,36 @@ Follow these steps to create the conda environment and install the required pack
     export PYTHONPATH={path/to/project}/NID-GPT:$PYTHONPATH
     ```
 
-### 2\. Project Structure
+4. [GReaT(LLM)](GReaT) environment setup. 
+
+
+## 2. 🔬 Qick Start to Reproducing the Results Shown in the Paper
+
+You can reproduce our findings in using the simple batch scripts by executing each step.
+
+### Using Batch Scripts 
+
+The fastest way to reproduce our results is to use the provided bash scripts.
+
+  0. **Download the processed [data](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/Etuw1nXMxgZAixSU405NdEkBsNo8AVsR2X41lfv1gDD4yA?e=cXsVl2), and put then into the [data](data) directory.**
+
+  1. **Train CTGAN and sample synthetic data:**
+
+    ./batch_scripts/ctgan.sh
+
+  2. **Train Tab-DDPM and sample synthetic data:**
+
+    ./batch_scripts/tab_ddpm.sh
+
+  3. **Evaluate the generated data:**
+
+    ./batch_scripts/eval.sh
+  4. **Reproducing the Results for [GReaT(LLM)](GReaT).**
+
+**You can find all the experiment results from [here](results/README.md).**
+
+
+## 3. Project Structure
 
 A brief overview of the key directories in this repository.
 
@@ -62,7 +118,13 @@ NID-GPT/
 └── requirements.txt    # Python dependencies
 ```
 
-### 3\. Data Preparation
+---
+
+## 4. ⚙️ Manual Reproduction (Detailed Steps)
+This section provides a detailed breakdown of each step for manually running the data preparation, generation, tuning, and evaluation pipelines.
+
+
+### Step 0: Data Preparation
 
 Some models, like Tab-DDPM, require data to be in a specific `.npy` format.
 
@@ -73,32 +135,6 @@ Some models, like Tab-DDPM, require data to be in a specific `.npy` format.
 
 -----
 
-## 🔬 Reproducing Our Results
-
-You can reproduce our findings in using the simple batch scripts by executing each step.
-
-### Using Batch Scripts 
-
-The fastest way to reproduce our results is to use the provided bash scripts.
-
-  * **Train CTGAN and sample synthetic data:**
-    ```bash
-    ./batch_scripts/ctgan.sh
-    ```
-  * **Train Tab-DDPM and sample synthetic data:**
-    ```bash
-    ./batch_scripts/tab_ddpm.sh
-    ```
-  * **Evaluate the generated data:**
-    ```bash
-    ./batch_scripts/eval.sh
-    ```
-
-**You can find all the experiment results from [here](results/README.md).**
-
-
-## ⚙️ Manual Reproduction (Detailed Steps)
-This section provides a detailed breakdown of each step for manually running the data generation, tuning, and evaluation pipelines.
 
 ### Step 1: Generate Synthetic Data (Choose a Model)
 #### 1.1 CTGAN
@@ -272,12 +308,12 @@ optional arguments:
     python scripts/evaluation.py --train data/CICIDS2017/results/ddpm_synthetic_data_all.csv --test data/CICIDS2017/test_all_classes.csv --model mlp --dataset cicids2017_all
     ```
 
-### 6. Auxiliary Functions
+## 5. Auxiliary Functions
 - ```~/data_process/transfer_csv_to_npy.ipynb```: Transfer a single csv file to npy files that are used to train or fine-tuned parameters of diffusion models. 
 - ```~/data_process/transfer_npy_to_csv.ipynb```: Transfer sampled npy files by the trained diffusion model to CSV, which is used to do the final evaluation.  
 - ```~/data_process/feature_distribution.ipynb```: Draw figures of the distributions of values of columns between orginal data and synthetic data. 
 
-### 7. Sample Generated Synthetic Data
+## 6. Sample Generated Synthetic Data
 You can find the generated synthetic data from [here](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/EsWIEZ2UkjVEhriVpG3kvWwB80r-NyopUve1A7MaOmmGaA?e=omE0Rv).
 
 
