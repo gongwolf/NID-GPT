@@ -118,7 +118,7 @@ One environment is used to run CTGAN and TabDDPM. The second environment is used
 
 You can reproduce our findings in using the simple batch scripts by executing each step.
 
-### Using Batch Scripts for CTGAN and TabDDPM
+### 2.1 Using Batch Scripts for CTGAN and TabDDPM
 
 The fastest way to reproduce our results is to use the provided bash scripts.
 
@@ -145,7 +145,7 @@ The fastest way to reproduce our results is to use the provided bash scripts.
     ./batch_scripts/eval.sh
     
 
-### Estimate running time for above bash files (better configuration might use less running time):
+### 2.2 Estimate running time for above bash files (better configuration might use less running time):
 - Our Linux server configuration: CPU: AMD EPYC 7313, RAM:512 GB, GPU: NVIDIA A100. 
 - CTGAN: ~3 weeks
 - TabDDPM: ~1 day
