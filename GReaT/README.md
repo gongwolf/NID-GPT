@@ -16,7 +16,7 @@ You also can download the fine-tuned LLM from our [OneDrive](https://eltnmsu-my.
 
 ---
 
-## Install be_great library:
+## Environment Setup:
 ```aiignore
 pip install be-great
 ```

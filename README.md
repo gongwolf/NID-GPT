@@ -56,7 +56,9 @@ This section provides instructions for setting up the environment and project.
 
 Follow these steps to create the conda environment and install the required packages. If you need help to set up environment on the Linux Server, click [here](https://github.com/JiefeiLiu/Federated_learning_env_set_up).
 
-1.  Create and activate the conda environment:
+Due to the incompatible requirement python packages between TabDDPM and GReaT(LLM), you need to set up **two** conda environments for CTGAN, TabDDPM and GReaT(LLM).   
+
+1.  Create and activate the conda environment for CTGAN and TabDDPM:
     ```bash
     conda create -n nidgpt python=3.9
     conda activate nidgpt
@@ -77,21 +79,21 @@ Follow these steps to create the conda environment and install the required pack
 
 You can reproduce our findings in using the simple batch scripts by executing each step.
 
-### Using Batch Scripts 
+### Using Batch Scripts for CTGAN and TabDDPM
 
 The fastest way to reproduce our results is to use the provided bash scripts.
 
   0. **Download the processed [data](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/Etuw1nXMxgZAixSU405NdEkBsNo8AVsR2X41lfv1gDD4yA?e=cXsVl2), and put then into the [data](data) directory.**
 
-  1. **Train CTGAN and sample synthetic data:**
+  1. **Train CTGAN and sample synthetic data (conda environment:`nidgpt`):**
 
     ./batch_scripts/ctgan.sh
 
-  2. **Train Tab-DDPM and sample synthetic data:**
+  2. **Train Tab-DDPM and sample synthetic data (conda environment:`nidgpt`):**
 
     ./batch_scripts/tab_ddpm.sh
 
-  3. **Evaluate the generated data:**
+  3. **Evaluate the generated data (conda environment:`nidgpt`):**
 
     ./batch_scripts/eval.sh
   4. **Reproducing the Results for [GReaT(LLM)](GReaT).**
