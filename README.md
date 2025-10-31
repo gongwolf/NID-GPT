@@ -150,7 +150,7 @@ The fastest way to reproduce our results is to use the provided bash scripts.
 - CTGAN: ~3 weeks
 - TabDDPM: ~1 day
 - GReaT(LLM): ~4 months
-- You can find the single run command for faster reproduce in Section [4](#4--manual-reproduction-detailed-steps).
+- You can find the single run command for faster reproduce in Section [4](#4-manual-reproduction-detailed-steps).
 
 **You can find all the experiment results from [here](results/README.md).**
 
@@ -180,7 +180,7 @@ NID-GPT/
 
 ---
 
-## 4. ⚙️ Manual Reproduction (Detailed Steps)
+## 4. Manual Reproduction (Detailed Steps)
 This section provides a detailed breakdown of each step for manually running the data preparation, generation, tuning, and evaluation pipelines.
 
 
