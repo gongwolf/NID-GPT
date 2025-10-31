@@ -1,6 +1,6 @@
 import argparse
 import pandas as pd
-# from be_great import GReaT
+from be_great import GReaT
 
 def main():
     parser = argparse.ArgumentParser(
@@ -38,18 +38,21 @@ def main():
         default=2000,
         help="Maximum number of tokens to generate. Ensure it's long enough to not cut off any information."
     )
+    
     parser.add_argument(
         "--start_col",
         type=str,
         default="label",
         help="Feature to use as the starting point for the generation process."
     )
-    parser.add_argument(
-        "--start_col_dist",
-        type=str,
-        default="{'0': 0.33, '1': 0.33, '2': 0.34}",
-        help="Distribution of the starting feature (as a Python dictionary string)."
-    )
+
+    # parser.add_argument(
+    #     "--start_col_dist",
+    #     type=str,
+    #     default="{'0': 0.33, '1': 0.33, '2': 0.34}",
+    #     help="Distribution of the starting feature (as a Python dictionary string)."
+    # )
+
     parser.add_argument(
         "--device",
         type=str,

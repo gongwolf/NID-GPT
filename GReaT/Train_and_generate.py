@@ -62,18 +62,21 @@ def main():
         default=2000,
         help="Maximum number of tokens to generate. Ensure it's long enough to not cut off any information."
     )
+
     parser.add_argument(
         "--start_col",
         type=str,
         default="label",
         help="Feature to use as the starting point for the generation process."
     )
+
     # parser.add_argument(
     #     "--start_col_dist",
     #     type=str,
     #     default="{'0': 0.06, '1': 0.06, '2': 0.2, '3': 0.2, '4': 0.2, '5': 0.2, '6': 0.06, '7': 0.02}",
     #     help="Distribution of the starting feature (as a Python dictionary string)."
     # )
+    
     parser.add_argument(
         "--device",
         type=str,
@@ -125,11 +128,11 @@ def main():
     model.save(args.save_model_path)
 
     # Convert string dict input for start_col_dist into actual dict
-    # try:
-    #     start_col_dist = eval(args.start_col_dist)
-    # except Exception:
-    #     print("Warning: Could not parse start_col_dist. Using default distribution.")
-    #     start_col_dist = {'0': 0.06, '1': 0.06, '2': 0.2, '3': 0.2, '4': 0.2, '5': 0.2, '6': 0.06, '7': 0.02}
+    try:
+        start_col_dist = eval(args.start_col_dist)
+    except Exception:
+        print("Warning: Could not parse start_col_dist. Using default distribution.")
+        start_col_dist = {'0': 0.06, '1': 0.06, '2': 0.2, '3': 0.2, '4': 0.2, '5': 0.2, '6': 0.06, '7': 0.02}
 
     # Generate synthetic samples
     synthetic_data = model.sample(
@@ -137,7 +140,7 @@ def main():
         k=args.k,
         max_length=args.max_length,
         start_col=args.start_col,
-        # start_col_dist=start_col_dist,
+        start_col_dist=start_col_dist,
         device=args.device
     )
 
