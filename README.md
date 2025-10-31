@@ -123,7 +123,7 @@ You can reproduce our findings in using the simple batch scripts by executing ea
 
 The fastest way to reproduce our results is to use the provided bash scripts.
 
-  0. **Download the processed [data folder](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/Etuw1nXMxgZAixSU405NdEkBsNo8AVsR2X41lfv1gDD4yA?e=cXsVl2), and put then into the root directory.**
+  0. **Download the processed [data](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/Etuw1nXMxgZAixSU405NdEkBsNo8AVsR2X41lfv1gDD4yA?e=cXsVl2) folder, and put it into the root directory.**
 
   1. Add the project root to your `PYTHONPATH`:
   ```
