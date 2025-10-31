@@ -35,14 +35,14 @@ You also can download the fine-tuned LLM from our [OneDrive](https://eltnmsu-my.
 3. Sample command to fine-tune the LLM and generate the synthetic data for CICIDS2017 dataset shows below:
 
 ```aiignore
-python generate_great_data.py --epochs 5 --batch_size 2 --n_samples 50000 --device cuda
-
+python Train_and_generate.py --epochs 5 --batch_size 2 --n_samples 50000 --device cuda --data_path ../data/UNSW/training_all_classes_sample.csv
 ```
 #### Parameters:
 - epochs: Total epochs to fine-tune the LLM, each epoch might take more than one month to train. 
 - batch_size: A subset of the training dataset used in one iteration of training, if GPU memory is small, suggest use smaller batch size like 1 or 2. 
 - n_samples: Target number of instances for the synthetic data.
 - device: use cpu or GPU, default GPU: "cuda". 
+- data_path: data path of the training data, located in the root directory. 
 
 
 ### Other Parameters
@@ -68,8 +68,7 @@ optional arguments:
   --start_col_dist START_COL_DIST
                         Distribution of the starting feature (as a Python dictionary string).
   --device DEVICE       Device to use for generation (e.g., 'cuda' or 'cpu').
-  --data_path {../data/CICIDS2017/train_all_classes.csv,../data/CICDDOS2019/training.csv,../data/UNSW/train_all_classes.csv}
-                        Path to the training CSV data.
+  --data_path           Path to the training CSV data.
   --save_model_path SAVE_MODEL_PATH
                         Path to save the trained model.
   --output_csv OUTPUT_CSV
@@ -77,15 +76,16 @@ optional arguments:
 ```
 
 ## Quick start for loading fine-tuned model and generating
-1. Download the fine-tuned [LLMs](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/EhTZWB27vSJLi1zSXNeQDlcBXBusi7XVo41Rjo3SC0brVQ?e=MPnxrB). Put the folder into current file directory.
+1. Download the fine-tuned [LLMs](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/EhTZWB27vSJLi1zSXNeQDlcBXBusi7XVo41Rjo3SC0brVQ?e=MPnxrB). Put the folder into [root](https://github.com/gongwolf/NID-GPT/tree/main) directory.
 2. Run the following command for CICIDS2017 synthetic dataset generation: 
 
 ```aiignore
-python generate_samples.py --n_samples 5000 --output_csv synthetic_5k.csv --device cuda
+python Load_and_generate.py --model_dir ../Fine_tuned_LLMs/CICIDS2017 --n_samples 5000 --output_csv synthetic_5k.csv --device cuda
 ```
 - n_samples: Target number of instances for the synthetic data.
 - output_csv: output CSV file name.
 - device: use cpu or GPU, default GPU: "cuda". 
+- model_dir: point to the folder of the fine-tuned LLMs, which should be downloaded and put into the root directory. 
 
 ### Other Parameters
 ```aiignore

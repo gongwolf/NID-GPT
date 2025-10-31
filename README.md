@@ -54,7 +54,7 @@ This section provides instructions for setting up the environment and project.
 
 ## 1. 🚀Environment Setting
 
-To run the code in this codebase, you need to set up two environments.
+To run the code in this codebase, you need to set up **two** environments.
 
 One environment is used to run CTGAN and TabDDPM. The second environment is used to run GReaT(LLM). 
 
@@ -123,24 +123,35 @@ You can reproduce our findings in using the simple batch scripts by executing ea
 
 The fastest way to reproduce our results is to use the provided bash scripts.
 
-  0. **Download the processed [data](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/Etuw1nXMxgZAixSU405NdEkBsNo8AVsR2X41lfv1gDD4yA?e=cXsVl2), and put then into the [data](data) directory.**
+  0. **Download the processed [data folder](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/Etuw1nXMxgZAixSU405NdEkBsNo8AVsR2X41lfv1gDD4yA?e=cXsVl2), and put then into the root directory.**
 
   1. Add the project root to your `PYTHONPATH`:
   ```
-  export PYTHONPATH={path/to/project}/NID-GPT:$PYTHONPATH`
+  export PYTHONPATH={path/to/project}/NID-GPT:$PYTHONPATH
   ```
   2. **Train CTGAN and sample synthetic data (conda environment:`nidgpt1`):**
 
     ./batch_scripts/ctgan.sh
-
+    
   3. **Train Tab-DDPM and sample synthetic data (conda environment:`nidgpt1`):**
 
     ./batch_scripts/tab_ddpm.sh
 
-  4. **Evaluate the generated data (conda environment:`nidgpt1`):**
+  4. **Fine-tune [GReaT(LLM)](GReaT) and sample synthetic data (conda environment:`nidgpt2`):**
+    
+    ./batch_scripts/begreat.sh
+
+  5. **Evaluate the generated data (conda environment:`nidgpt1`):**
 
     ./batch_scripts/eval.sh
-  5. **Reproducing the Results for [GReaT(LLM)](GReaT) (conda environment:`nidgpt2`).**
+    
+
+### Estimate running time for above bash files (better configuration might use less running time):
+- Our Linux server configuration: CPU: AMD EPYC 7313, RAM:512 GB, GPU: NVIDIA A100. 
+- CTGAN: ~3 weeks
+- TabDDPM: ~1 day
+- GReaT(LLM): ~4 months
+- You can find the single run command for faster reproduce in Section: [Manual Reproduction](#4--manual-reproduction-detailed-steps).
 
 **You can find all the experiment results from [here](results/README.md).**
 
@@ -177,7 +188,7 @@ Some models, like Tab-DDPM, require data to be in a specific `.npy` format.
   * To convert your `.csv` data into `.npy` files, see the `data_process/transfer_csv_to_npy.ipynb` notebook.
   * To convert generated `.npy` samples back to `.csv` for evaluation, see the `data_process/transfer_npy_to_csv.ipynb` notebook.
 
-**You also can find the raw csv and our processed data [here](https://eltnmsu-my.sharepoint.com/:f:/r/personal/hcao_nmsu_edu/Documents/DATA/DAC_UH_Jiefei_Milcom2025wk_ICMLAext_CL/NID-GPT/data?csf=1&web=1&e=eY8iTm)**
+**You also can find the raw csv and our processed data [here](https://eltnmsu-my.sharepoint.com/:f:/r/personal/hcao_nmsu_edu/Documents/DATA/DAC_UH_Jiefei_Milcom2025wk_ICMLAext_CL/NID-GPT/data?csf=1&web=1&e=eY8iTm).**
 
 -----
 
