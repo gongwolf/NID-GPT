@@ -161,17 +161,21 @@ A brief overview of the key directories in this repository.
 
 ```
 NID-GPT/
-├── batch_scripts/      # Pre-configured bash scripts to run experiments
-├── data_process/       # Jupyter notebooks for data pre/post-processing
-├── eval/               # Scripts for model evaluation and hyperparameter tuning
-├── exp/                # Default directory for experiment configs and outputs (for Tab-DDPM)
-├── GReaT/              # Code and resources for the LLM (GReaT) model
-├── results/            # Directory containing all experiment results
-├── resource/           # Images used in the README
-├── scripts/            # Python scripts for training, sampling, and evaluation
-├── tab_ddpm/           # Source code of the Tab-DDPM model
-├── tuned_models/       # JSON files storing tuned MLP hyperparameters for evaluating and TAB_DDPM training
-└── requirements.txt    # Python dependencies
+├── batch_scripts/            # Pre-configured bash scripts to run experiments
+├── data_process/             # Jupyter notebooks for data pre/post-processing
+├── eval/                     # Scripts for model evaluation and hyperparameter tuning
+├── exp/                      # Default directory for experiment configs and outputs (for Tab-DDPM)
+├── GReaT/                    # Code and resources for the LLM (GReaT) model
+├── results/                  # Directory containing all experiment results
+├── resource/                 # Images used in the README
+├── scripts/                  # Python scripts for training, sampling, and evaluation
+├── tab_ddpm/                 # Source code of the Tab-DDPM model
+├── tuned_models/             # JSON files storing tuned MLP hyperparameters for evaluating and TAB_DDPM training
+├── data/                     # Processed data (download from provided link)
+├── Fine_tuned_LLMs/          # Fine-tuned LLMs (download from provided link)
+├── Generated_synthetic_data/ # Generated sample synthetic data (download from provided link)
+└── requirements.txt          # Python dependencies
+
 ```
 
 ---
@@ -186,6 +190,10 @@ Some models, like Tab-DDPM, require data to be in a specific `.npy` format.
 
   * To convert your `.csv` data into `.npy` files, see the `data_process/transfer_csv_to_npy.ipynb` notebook.
   * To convert generated `.npy` samples back to `.csv` for evaluation, see the `data_process/transfer_npy_to_csv.ipynb` notebook.
+  * Example: 
+    * Input: `data/CICIDS2017/train_all_classes.csv`
+    * Output the following files into the same data folder: `X_num_test.npy, X_num_train.npy, X_num_val.npy, y_test.npy, y_train.npy, y_val.npy`
+
 
 **You also can find the raw csv and our processed data [here](https://eltnmsu-my.sharepoint.com/:f:/r/personal/hcao_nmsu_edu/Documents/DATA/DAC_UH_Jiefei_Milcom2025wk_ICMLAext_CL/NID-GPT/data?csf=1&web=1&e=eY8iTm).**
 
@@ -230,6 +238,8 @@ optional arguments:
     ```
     python scripts/ctgan_train_generation.py --output data/CICIDS2017/ctgan_synthetic_data_all_v1.csv --meta data/CICIDS2017/ctgan_data_all_metadata.json --model data/CICIDS2017/all_ctgan_synthesizer.pkl --num_rows 200000 --sample_only --use_cuda
     ```
+    - model: trained CTGAN model saved at the same data folder as the training data. 
+
 
 #### 1.2 TAB\_DDPM
 **1. Preparation**
