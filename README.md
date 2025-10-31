@@ -14,7 +14,6 @@ MILCOM 2025 (Accepted and Presented)
 [Link to Paper - coming soon]
 </h4>
 
----
 
 This repository contains the official resources for the paper "Is Synthetic Data from Generative Models Ready for Network Intrusion Detection Systems?", which evaluates the use of generative AI for creating synthetic datasets for network intrusion detection.
 
