@@ -16,13 +16,18 @@ You also can download the fine-tuned LLM from our [OneDrive](https://eltnmsu-my.
 
 ---
 
-## Environment Setup:
-```aiignore
-pip install be-great
-```
-Requires a `Python version >= 3.9`. If you have problem to set up environment for conda from the linux server, you can get help from [here](https://github.com/JiefeiLiu/Federated_learning_env_set_up). 
+[//]: # (## Environment Setup:)
 
-You can find the original GReaT framework from [here](https://github.com/tabularis-ai/be_great).
+[//]: # (```aiignore)
+
+[//]: # (pip install be-great)
+
+[//]: # (```)
+
+[//]: # (Requires a `Python version >= 3.9`. If you have problem to set up environment for conda from the linux server, you can get help from [here]&#40;https://github.com/JiefeiLiu/Federated_learning_env_set_up&#41;. )
+
+[//]: # ()
+[//]: # (You can find the original GReaT framework from [here]&#40;https://github.com/tabularis-ai/be_great&#41;.)
 
 ## Quick start for fine-tuning and generating
 1. Download the processed [data](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/Etuw1nXMxgZAixSU405NdEkBsNo8AVsR2X41lfv1gDD4yA?e=1fG78t), and put then into the [data](https://github.com/gongwolf/NID-GPT/tree/main/data) directory. 
