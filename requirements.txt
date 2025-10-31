@@ -8,7 +8,7 @@ optuna==2.10.1
 pandas==2.2.3
 pyarrow==18.0.0
 rtdl==0.0.9
-scikit-learn==1.0.2
+scikit-learn==1.1.1
 scipy==1.13.1
 skorch==0.11.0
 tomli-w==0.4.0

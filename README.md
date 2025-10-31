@@ -112,9 +112,9 @@ NID-GPT/
 ├── GReaT/              # Code and resources for the LLM (GReaT) model
 ├── results/            # Directory containing all experiment results
 ├── resource/           # Images used in the README
-├── scripts/            # Main Python scripts for training, sampling, and evaluation
-├── tab_ddpm/           # Source code for the Tab-DDPM model
-├── tuned_models/       # JSON files storing tuned MLP hyperparameters
+├── scripts/            # Python scripts for training, sampling, and evaluation
+├── tab_ddpm/           # Source code of the Tab-DDPM model
+├── tuned_models/       # JSON files storing tuned MLP hyperparameters for evaluating and TAB_DDPM training
 └── requirements.txt    # Python dependencies
 ```
 

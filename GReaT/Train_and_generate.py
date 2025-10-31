@@ -19,7 +19,7 @@ def main():
     parser.add_argument(
         "--experiment_dir",
         type=str,
-        default="unsw_train",
+        default="trained_models",
         help="Directory where the training checkpoints will be saved."
     )
     parser.add_argument(
@@ -68,12 +68,12 @@ def main():
         default="label",
         help="Feature to use as the starting point for the generation process."
     )
-    parser.add_argument(
-        "--start_col_dist",
-        type=str,
-        default="{'0': 0.06, '1': 0.06, '2': 0.2, '3': 0.2, '4': 0.2, '5': 0.2, '6': 0.06, '7': 0.02}",
-        help="Distribution of the starting feature (as a Python dictionary string)."
-    )
+    # parser.add_argument(
+    #     "--start_col_dist",
+    #     type=str,
+    #     default="{'0': 0.06, '1': 0.06, '2': 0.2, '3': 0.2, '4': 0.2, '5': 0.2, '6': 0.06, '7': 0.02}",
+    #     help="Distribution of the starting feature (as a Python dictionary string)."
+    # )
     parser.add_argument(
         "--device",
         type=str,
@@ -87,14 +87,14 @@ def main():
     parser.add_argument(
         "--data_path",
         type=str,
-        default="../data/CICIDS2017/train_all_classes.csv",
-        choices = ["../data/CICIDS2017/train_all_classes.csv", "../data/CICDDOS2019/training.csv", "../data/UNSW/train_all_classes.csv"],
+        default="data/CICIDS2017/train_all_classes.csv",
+        # choices = ["../data/CICIDS2017/train_all_classes.csv", "../data/CICDDOS2019/training.csv", "../data/UNSW/train_all_classes.csv"],
         help="Path to the training CSV data."
     )
     parser.add_argument(
         "--save_model_path",
         type=str,
-        default="train_5epochs",
+        default="final_model",
         help="Path to save the trained model."
     )
     parser.add_argument(
@@ -125,11 +125,11 @@ def main():
     model.save(args.save_model_path)
 
     # Convert string dict input for start_col_dist into actual dict
-    try:
-        start_col_dist = eval(args.start_col_dist)
-    except Exception:
-        print("Warning: Could not parse start_col_dist. Using default distribution.")
-        start_col_dist = {'0': 0.06, '1': 0.06, '2': 0.2, '3': 0.2, '4': 0.2, '5': 0.2, '6': 0.06, '7': 0.02}
+    # try:
+    #     start_col_dist = eval(args.start_col_dist)
+    # except Exception:
+    #     print("Warning: Could not parse start_col_dist. Using default distribution.")
+    #     start_col_dist = {'0': 0.06, '1': 0.06, '2': 0.2, '3': 0.2, '4': 0.2, '5': 0.2, '6': 0.06, '7': 0.02}
 
     # Generate synthetic samples
     synthetic_data = model.sample(
@@ -137,7 +137,7 @@ def main():
         k=args.k,
         max_length=args.max_length,
         start_col=args.start_col,
-        start_col_dist=start_col_dist,
+        # start_col_dist=start_col_dist,
         device=args.device
     )
 
