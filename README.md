@@ -1,6 +1,6 @@
 # Is Synthetic Data from Generative Models Ready for Network Intrusion Detection Systems?
 
----
+
 
 <h3 align="center">
 Jiefei Liu, Qixu Gong, Wenbin Jiang, Pratyay Kumar, Abu Saleh Md Tayeen, Huiping Cao, Satyajayant Misra, Jayashree Harikumar
