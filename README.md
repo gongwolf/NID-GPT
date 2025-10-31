@@ -48,53 +48,99 @@ This repository contains the official resources for the paper "Is Synthetic Data
 
 [//]: # (- Jayashree Harikumar)
 
-## 1. Getting Started
+[//]: # (## 1. Getting Started)
 
 This section provides instructions for setting up the environment and project.
 
-### 1.1 🚀Installation
+## 1. 🚀Environment Setting
 
-Follow these steps to create the conda environment and install the required packages. If you need help to set up environment on the Linux Server, click [here](https://github.com/JiefeiLiu/Federated_learning_env_set_up).
+To run the code in this codebase, you need to set up two environments.
 
-1.  Create and activate the conda environment:
-    ```bash
-    conda create -n nidgpt python=3.9
-    conda activate nidgpt
+One environment is used to run CTGAN and TabDDPM. The second environment is used to run GReaT(LLM). 
+
+**important!!!** This two environments are not compitable with each other. Please straight follow the instruction below:
+
+[//]: # (Follow these steps to create the conda environment and install the required packages. If you need help to set up environment on the Linux Server, click [here]&#40;https://github.com/JiefeiLiu/Federated_learning_env_set_up&#41;.)
+
+[//]: # ()
+[//]: # (Due to the incompatible requirement python packages between TabDDPM and GReaT&#40;LLM&#41;, you need to set up **two** conda environments for CTGAN, TabDDPM and GReaT&#40;LLM&#41;.   )
+
+
+1. Create and use environment for CTGAN and TabDDPM: <br>
+    Create and activate conda environment:
+    ```aiignore
+    conda create -n nidgpt1 python=3.9 
+    conda activate nidgpt1
     ```
-2.  Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-3.  Add the project root to your `PYTHONPATH`:
-    ```bash
-    export PYTHONPATH={path/to/project}/NID-GPT:$PYTHONPATH
+    Install dependencies: 
+    ```aiignore
+    pip install -r requirements1.txt
     ```
 
-4. [GReaT(LLM)](GReaT) environment setup. 
 
+[//]: # (    ```bash)
+
+[//]: # (    conda create -n nidgpt1 python=3.9 )
+
+[//]: # (    conda activate nidgpt1)
+
+[//]: # (    pip install -r requirements1.txt)
+
+[//]: # (    export PYTHONPATH={path/to/project}/NID-GPT:$PYTHONPATH)
+
+[//]: # (    ```)
+
+
+[//]: # (    ```bash)
+
+[//]: # (    pip install -r requirements1.txt)
+
+[//]: # (    ```)
+[//]: # (3.  Add the project root to your `PYTHONPATH`:)
+
+[//]: # (    ```bash)
+
+[//]: # (    export PYTHONPATH={path/to/project}/NID-GPT:$PYTHONPATH)
+
+[//]: # (    ```)
+
+2. Create and use environment for GReaT(LLM): <br> 
+   Create and activate conda environment:
+    ``` 
+   conda create -n nidgpt2 python=3.9 
+   conda activate nidgpt2
+   ```
+   Install dependencies: 
+   ```
+   pip install be-great
+   ```
 
 ## 2. 🔬 Qick Start to Reproducing the Results Shown in the Paper
 
 You can reproduce our findings in using the simple batch scripts by executing each step.
 
-### Using Batch Scripts 
+### Using Batch Scripts for CTGAN and TabDDPM
 
 The fastest way to reproduce our results is to use the provided bash scripts.
 
   0. **Download the processed [data](https://eltnmsu-my.sharepoint.com/:f:/g/personal/hcao_nmsu_edu/Etuw1nXMxgZAixSU405NdEkBsNo8AVsR2X41lfv1gDD4yA?e=cXsVl2), and put then into the [data](data) directory.**
 
-  1. **Train CTGAN and sample synthetic data:**
+  1. Add the project root to your `PYTHONPATH`:
+  ```
+  export PYTHONPATH={path/to/project}/NID-GPT:$PYTHONPATH`
+  ```
+  2. **Train CTGAN and sample synthetic data (conda environment:`nidgpt1`):**
 
     ./batch_scripts/ctgan.sh
 
-  2. **Train Tab-DDPM and sample synthetic data:**
+  3. **Train Tab-DDPM and sample synthetic data (conda environment:`nidgpt1`):**
 
     ./batch_scripts/tab_ddpm.sh
 
-  3. **Evaluate the generated data:**
+  4. **Evaluate the generated data (conda environment:`nidgpt1`):**
 
     ./batch_scripts/eval.sh
-  4. **Reproducing the Results for [GReaT(LLM)](GReaT).**
+  5. **Reproducing the Results for [GReaT(LLM)](GReaT) (conda environment:`nidgpt2`).**
 
 **You can find all the experiment results from [here](results/README.md).**
 
